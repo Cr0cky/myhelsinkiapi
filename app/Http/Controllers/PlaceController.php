@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class PlaceController extends Controller
 {
     public function index(){
-        return view('randomplace');
+        return view('places.randomplace');
     }
 }
