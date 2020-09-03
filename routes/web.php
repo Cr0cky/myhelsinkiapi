@@ -22,6 +22,4 @@ Route::get('/apitest', function () {
     return view('apitest');
 });
 
-Route::get('/randomplace', function () {
-    return view('randomplace');
-});
+Route::get('/randomplace', 'PlaceController@index');
