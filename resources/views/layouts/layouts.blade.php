@@ -66,6 +66,7 @@
     <body>
         @yield('apicontent')
         @yield('indexcontent')
+        @yield('randomplace')
         <footer>
             My footer
         </footer>

@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/apitest', function () {
     return view('apitest');
 });
+
+Route::get('/randomplace', function () {
+    return view('randomplace');
+});
