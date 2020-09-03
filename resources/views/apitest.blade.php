@@ -21,11 +21,27 @@
             My Helsinki
         </div>
 
+
         <?php
-            $json = file_get_contents('http://open-api.myhelsinki.fi/v1/place/653?language_filter=sv');
+
+            // Fetch all places
+            $jsonAllPlaces = file_get_contents('http://open-api.myhelsinki.fi/v1/places/?language_filter=sv');
+            $objAllPlaces = json_decode($jsonAllPlaces);
+
+            // Loop out all id:s
+            for ($x = 0; $x <= count($objAllPlaces->data)-1; $x++) {
+                echo $objAllPlaces->data[$x]->id."<br>";
+            }
+        ?>
+
+        <!--{{$objAllPlaces->data[5]->id}}-->
+
+
+
+        <!-- Pretty print one place -->
+        <?php
+            $json = file_get_contents('http://open-api.myhelsinki.fi/v1/place/573?language_filter=sv');
             $obj = json_decode($json);
-            //echo $obj->name->sv;
-            //$image = {{$obj->description->images[0]->url}}
         ?>
         <h1>
             {{$obj->name->sv}}
@@ -35,7 +51,7 @@
         </h3>
         {{$obj->description->body}}
 
-
+        <!-- Do not try to print image if there is no image -->
         @if (!empty($obj->description->images[0]->url)) 
             <p><img src={{$obj->description->images[0]->url}} alt="Bild" width="400"></p>      
         @endif
