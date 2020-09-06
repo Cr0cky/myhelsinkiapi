@@ -28,12 +28,28 @@
 
         <!-- Print image only if there is an image address -->
         @if (!empty($randomPlace->description->images[0]->url)) 
-            <p><img src={{$randomPlace->description->images[0]->url}} alt="Bild" width="400"></p>      
+            @for ($x = 0; $x <= count($randomPlace->description->images)-1; $x++)
+            <p><img src={{$randomPlace->description->images[$x]->url}} alt="Bild" width="400"></p>
+            @endfor     
         @endif
 
+
+        <p>
+            <!-- WWW link -->
+            <a href={{$randomPlace->info_url}}>www</a>
+            <!-- Address to Google Map  -->
+            <a href="https://www.google.com/maps/place/{{$randomPlace->location->address->street_address}},+{{$randomPlace->location->address->postal_code}}+{{$randomPlace->location->address->locality}}">map</a>
+        </p>
         <!-- Reload page, with new place -->
         <p><a href="<?php $_SERVER['PHP_SELF']; ?>">Visa en annan plats</a></p>
-        
+
+
+        <!-- Show saved places -->
+        @foreach($savedPlaces as $place)
+            <div>
+                {{ $place->name }} - {{ $place->description }} - {{ $place->http }}
+            </div> 
+        @endforeach           
     </div>
 </div>
 @endsection
