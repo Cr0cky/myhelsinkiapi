@@ -23,3 +23,4 @@ Route::get('/apitest', function () {
 });
 
 Route::get('/randomplace', 'PlaceController@index');
+Route::get('/save', 'PlaceController@save');

@@ -33,8 +33,18 @@ class PlaceController extends Controller
 
 
         return view('places.randomplace', [
-            'randomPlace' => $randomPlace,
+            'randomPlace' => $randomPlace
+        ]);
+    }
+
+    public function save(){
+
+        // Fetch data from database
+        // !! Create new route and view for this.
+        $savedPlaces = Place::all();
+
+        return view('places.save', [
             'savedPlaces' => $savedPlaces
-            ]);
+        ]);
     }
 }

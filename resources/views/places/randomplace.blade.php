@@ -44,12 +44,8 @@
         <p><a href="<?php $_SERVER['PHP_SELF']; ?>">Visa en annan plats</a></p>
 
 
-        <!-- Show saved places -->
-        @foreach($savedPlaces as $place)
-            <div>
-                {{ $place->name }} - {{ $place->description }} - {{ $place->http }}
-            </div> 
-        @endforeach           
-    </div>
+        <!-- Save data -->
+        
+
 </div>
 @endsection
